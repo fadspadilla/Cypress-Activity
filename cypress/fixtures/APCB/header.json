@@ -4,5 +4,22 @@
         "Standard PCBs",
         "Assembly Services",
         "Global Services"
+    ],
+    "resourcesDropdown": [
+        "Turn Times",
+        "PCB Capabilities & Expanded Capabilities",
+        "Tolerances",
+        "Pricing",
+        "Certifications"
+    ],
+    "companyDropdown": [
+        "FAQs",
+        "Quality Assurance",
+        "About Us",
+        "Careers",
+        "Facilities",
+        "Our Team",
+        "Students",
+        "Contact Us"
     ]
 }
