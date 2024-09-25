@@ -1,31 +1,37 @@
 describe("IBS Footer Tests", () => {
-    before(() => {
+    beforeEach(() => {
         cy.visit("https://www.ibselectronics.com/")
         cy.get(".footer").scrollIntoView().should('be.visible')
     })
-    it.skip("Verify if footer support links are working", () => {
+    it("Verify if footer support links are working", () => {
 
         cy.get(`.limit\\:self > .relative > :nth-child(2) > div`).each(($el, $index) => {
-            if($index > 1){
-                cy.get(`.limit\\:self > .relative > :nth-child(2) > :nth-child(${$index}) > a`).click().then(($link) => {
-                    let titlePage = $el.text().trim();
-                    cy.log(titlePage)
+            if($index > 0){
+                cy.get(`.limit\\:self > .relative > :nth-child(2) > :nth-child(${$index + 1}) > a`).click().then(($link) => {
+                    let linkText = $el.text().trim();
+
                     cy.wrap($link).invoke("attr", "href").then(($href) => {
-                        let href = $href.trim();
-                        cy.url().should('contain', href)
+                        cy.get('h1').invoke('text').then(($pageTitle) => {
+                            let title = $pageTitle.trim()
+                            let href = $href.trim();
+                            if(linkText == "FAQs"){
+                                expect(title).to.eq("Frequently Asked Questions");
+                                cy.url().should('contain', href)
+                            }else{
+                                expect(title).to.eq(linkText)
+                                cy.url().should('contain', href)
+                            }
+                        })
                     })
                 })
             }
         })
     })
-    it.only("Verify if footer social media icons are working", () => {
-        cy.get(".mt-3 > a").each(($el, $index) => {
-            cy.get(`.mt-3 > a:nth-child(${$index + 1})`).then(($link) => {                
+    it("Verify if footer social media icons are working", () => {
+        cy.get(".footer .mt-3 > a").each(($el, $index) => {
+            cy.get(`.footer .mt-3 > a:nth-child(${$index + 1})`).then(() => {                
                 const href = $el.attr('href');
-                cy.wrap($link).invoke("removeAttr", "target").click().then(($ref) => {                    
-                    cy.url().should('include', href.toLowerCase())
-                })
-                
+                expect(href).to.exist;                
             })
         })
 

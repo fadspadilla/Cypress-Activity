@@ -1,5 +1,5 @@
 describe("IBS Header Tests", () => {
-    before(() => {
+    beforeEach(() => {
         cy.visit("https://www.ibselectronics.com/")
     })
     it("Verify if header navigation links are working", () => {

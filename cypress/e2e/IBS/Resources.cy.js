@@ -4,7 +4,7 @@ describe("IBS Resources Tests", () => {
         cy.visit("https://www.ibselectronics.com/")
         cy.get('#cookieBannerCollapse').click();
         cy.wait(1000)
-        cy.fixture("resources.json").then((data) => {
+        cy.fixture("IBS/resources.json").then((data) => {
             resourceFixture = data;
         })
     })

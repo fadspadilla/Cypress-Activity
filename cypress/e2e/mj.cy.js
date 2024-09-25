@@ -18,4 +18,16 @@ describe("Header Tests", () => {
       }
     });
   });
+  it("Verify featured blog is not empty", () => {
+    cy.get('nav > ul > li:nth-child(5)').click()
+    cy.get('div.article-featured > div > h4').then(($blogtitle) => {
+      cy.wrap($blogtitle).invoke('text').then(($text) => {
+        var blogtitle = $text.trim()
+        cy.get('div.article-featured > div > a.card-button').click()
+        cy.get('h1').invoke('text').then((text) => {
+          expect((text.trim)).to.eq(blogtitle)
+        })
+      })
+    })
+  })
 });
