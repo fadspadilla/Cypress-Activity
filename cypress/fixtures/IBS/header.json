@@ -32,5 +32,23 @@
         "https://www.ibselectronics.com/services/",
         "https://www.ibselectronics.com/resources/",
         "https://www.ibselectronics.com/markets/"
+    ],
+    "servicesLinks": [
+        "https://www.ibselectronics.com/services/cable-assembly/",
+        "https://www.ibselectronics.com/services/global-procurement/",
+        "https://www.ibselectronics.com/services/inventory-management/",
+        "https://www.ibselectronics.com/services/new-product-introductions/",
+        "https://www.ibselectronics.com/services/prototyping/",
+        "https://www.ibselectronics.com/services/quality-testing/",
+        "https://www.ibselectronics.com/services/vendor-consolidation/"
+    ],
+    "marketsLinks": [
+        "https://www.ibselectronics.com/markets/aerospace/",
+        "https://www.ibselectronics.com/markets/automotive/",
+        "https://www.ibselectronics.com/markets/consumer-electronics/",
+        "https://www.ibselectronics.com/markets/industrial/",
+        "https://www.ibselectronics.com/markets/medical/",
+        "https://www.ibselectronics.com/markets/power-supply/",
+        "https://www.ibselectronics.com/markets/telecommunications/"
     ]
 }

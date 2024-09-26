@@ -29,29 +29,48 @@ describe("IBS Header Tests", () => {
         });
     });
   });
-  it.only("Verify if services dropdown list redirects to corresponding page", () => {
-    for (let i = 0; i < headerFix.servicesDropdown.length; i++) {
-    //   cy.get("nav > ul > li:nth-child(4)").realHover();
-    headerObj.clickDropdown(4)
-      cy.wait(1000);
-      headerObj
-        .clickElement(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${i + 1}) a > span`)
-        .then((text) => {
-          let href = text;
-          if (
-            headerFix.servicesDropdown[i] == "New Product Introductions"
-          ) {
-            cy.get("h1").should("contain", "NPI");
-            // cy.url().should("include", href);
-          } else {
-            cy.get("h1").should("contain", headerFix.servicesDropdown[i]);
-            // cy.url().should("include", href);
-          }
-        });
-    }
+  it("Verify if services dropdown list redirects to corresponding page", () => {
+    headerObj.clickDropdown("nav > ul > li:nth-child(4)").then(() => {
+      cy.get(`nav > ul > li:nth-child(4) > section > ul > li`).each((element, index, list) => {
+        cy.wait(1000)
+        if (index != list.length - 1) {
+          headerObj.clickElement(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${index + 1}) a > span`).then((text) => {
+            let headertext = text
+            if (text == "New Product Introductions") {
+              headerObj.getText("h1:nth-child(1)").should("eq", "NPI");
+              cy.url().should("eq", headerFix.servicesLinks[index]);
+            } else {
+              headerObj.getText("h1:nth-child(1)").should("eq", text);
+              cy.url().should("eq", headerFix.servicesLinks[index]);
+            }
+          })
+        }
+      })
+    })
   });
   it("Verify if markets dropdown list redirects to corresponding page", () => {
-    headerObj.verifyMarketsDropdown();
-    headerObj.clickMarketsDropdown();
+    headerObj.clickDropdown("nav > ul > li:nth-child(6)").then(() => {
+      cy.get(`nav > ul > li:nth-child(6) > section > ul > li`).each((element, index, list) => {
+        cy.wait(1000)
+        if (index != list.length - 1) {
+          headerObj.clickElement(`nav > ul > li:nth-child(6) > section > ul > li:nth-child(${index + 1}) a > span`).then((text) => {
+            let headertext = text
+            if (headertext == "Aerospace & Aviation") {
+              headerObj.getText("h1").should("eq", "Aerospace");
+              cy.url().should("eq", headerFix.marketsLinks[index]);
+            }else if (headertext == "Automotive & Transportation") {
+              headerObj.getText("h1").should("eq", "Automotive");
+              cy.url().should("eq", headerFix.marketsLinks[index]);
+            }else if (headertext == "Power & Energy") {
+              headerObj.getText("h1").should("eq", "Power");
+              cy.url().should("eq", headerFix.marketsLinks[index]);
+            } else {
+              headerObj.getText("h1").should("eq", headertext);
+              cy.url().should("eq", headerFix.marketsLinks[index]);
+            }
+          })
+        }
+      })
+    })
   });
 });
