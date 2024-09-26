@@ -1,10 +1,11 @@
+import Search from "../../pages/IBS/searchObject"
+
 describe("IBS Search Tests", () => {
+    const searchObj = new Search;
     before(() => {
         cy.visit("https://www.ibselectronics.com/")
     })
     it("Verify if search function is working", () => {
-        cy.get('#search-input').type("Amphenol Communications Solutions")
-        cy.get('#searchButtonMain').click();
-        cy.contains('Amphenol Communications Solutions').should('exist')
+        searchObj.searchItem('Amphenol Communications Solutions')
     })
 })
