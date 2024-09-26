@@ -1,19 +1,12 @@
+import Footer from "../../pages/APCB/footerObject"
+
 describe("IBS Footer Tests", () => {
+    const footerObj = new Footer;
     before(() => {
         cy.visit("/")
         cy.get(".footer").scrollIntoView().should('be.visible')
     })
-    it.only("Verify if footer social media icons are working", () => {
-        cy.get(".footer-navigation > div.limit > div > div:nth-child(2) > a").each(($el, $index) => {
-            cy.get(`.footer-navigation > div.limit > div > div:nth-child(2) > a:nth-child(${$index + 1})`).then(($link) => {                
-                cy.wrap($link).invoke('attr', 'href').then(($href) => {
-                    const href = $href.trim();
-                    expect(href).to.exist;                
-                })
-            })
-        })
-
+    it.only("Verify if footer social media links are not empty", () => {
+        footerObj.verifySocialMediaLinks();        
     })
-    
-      
 })
