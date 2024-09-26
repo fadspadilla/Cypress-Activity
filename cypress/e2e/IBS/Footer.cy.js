@@ -3,7 +3,8 @@ describe("IBS Footer Tests", () => {
     const footerObj = new Footer;
     beforeEach(() => {
         cy.visit("https://www.ibselectronics.com/")
-        cy.get(".footer").scrollIntoView().should('be.visible')
+        cy.acceptCookiesIBS();
+        footerObj.goToFooter();
     })
     it("Verify if footer support links redirects to the corresponding page", () => {
         footerObj.verifySupportLinks()        

@@ -23,9 +23,8 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("acceptCookies", () => {
+Cypress.Commands.add("acceptCookiesIBS", () => {
   cy.get("#cookieBanner", { timeout: 5000 })
     .should("be.visible")
-    .find("button")
-    .click();
+    .find('button').click();
 });

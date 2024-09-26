@@ -64,6 +64,10 @@ class Blog {
         cy.get(':nth-child(2) > .gap-3 > :nth-child(3)').select(str);
         cy.get('h1').should('contain', str)
     }
+    goToBlogPage(){
+        cy.get('nav > ul > li:nth-child(5)').click()
+        cy.get('h1').should('contain', 'Blog')
+    }
 }
 
 export default Blog;

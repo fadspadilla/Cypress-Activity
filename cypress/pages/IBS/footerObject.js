@@ -1,4 +1,7 @@
 class Footer{
+    goToFooter(){
+        cy.get(".footer").scrollIntoView().should('be.visible')
+    }
     verifySupportLinks(){
         cy.get(`.limit\\:self > .relative > :nth-child(2) > div`).each(($el, $index) => {
             if($index > 0){

@@ -1,0 +1,36 @@
+{
+    "headerDropdown" : [
+        "Products",
+        "Manufacturers",
+        "About IBS",
+        "Services",
+        "Resources",
+        "Markets"
+    ],
+    "servicesDropdown": [
+        "Cable Assembly",
+        "Global Procurement",
+        "Inventory Management",
+        "New Product Introductions",
+        "Prototyping",
+        "Quality Testing",
+        "Vendor Consolidation"
+    ],
+    "marketsDropdown": [
+        "Aerospace & Aviation",
+        "Automotive & Transportation",
+        "Consumer Electronics",
+        "Industrial",
+        "Medical",
+        "Power & Energy",
+        "Telecommunications"
+    ],
+    "headerLinks": [
+        "https://www.ibselectronics.com/products/",
+        "https://www.ibselectronics.com/manufacturers/",
+        "https://www.ibselectronics.com/about/",
+        "https://www.ibselectronics.com/services/",
+        "https://www.ibselectronics.com/resources/",
+        "https://www.ibselectronics.com/markets/"
+    ]
+}

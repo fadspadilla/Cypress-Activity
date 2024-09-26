@@ -54,10 +54,11 @@ class Header {
         cy.fixture("APCB/header.json").then((data) => {
             for(let i=0; i < data.servicesDropdown.length; i++){
                 cy.get("nav > ul > li:nth-child(2)").realHover();
+                cy.wait(1000)
                 cy.get(`nav > ul > li:nth-child(2) > section > ul > li:nth-child(${i+1}) a`).then(($link) => {
                     cy.wrap(($link)).invoke('attr', 'href').then(($text) => {
                         let href = $text.trim();
-                        cy.get(`nav > ul > li:nth-child(2) > section > ul > li:nth-child(${i+1}) a > span`).click({ force: true }).then(($link) => {
+                        cy.get(`nav > ul > li:nth-child(2) > section > ul > li:nth-child(${i+1}) a > span`).click().then(($link) => {
                             cy.get('h1').should('contain', data.servicesDropdown[i])
                             cy.url().should('include', href)
                         })
@@ -71,10 +72,11 @@ class Header {
         cy.fixture("APCB/header.json").then((data) => {
             for(let i=0; i < data.resourcesDropdown.length; i++){
                 cy.get("nav > ul > li:nth-child(3)").realHover();
+                cy.wait(1000)
                 cy.get(`nav > ul > li:nth-child(3) > section > ul > li:nth-child(${i+1}) a`).then(($link) => {
                     cy.wrap(($link)).invoke('attr', 'href').then(($text) => {
                         let href = $text.trim();
-                        cy.get(`nav > ul > li:nth-child(3) > section > ul > li:nth-child(${i+1}) a > span`).click({ force: true }).then(($link) => {
+                        cy.get(`nav > ul > li:nth-child(3) > section > ul > li:nth-child(${i+1}) a > span`).click().then(($link) => {
                             cy.get('h1').should('contain', data.resourcesDropdown[i])
                             cy.url().should('include', href)
                         })
@@ -88,10 +90,11 @@ class Header {
         cy.fixture("APCB/header.json").then((data) => {
             for(let i=0; i < data.companyDropdown.length; i++){
                 cy.get("nav > ul > li:nth-child(4)").realHover();
+                cy.wait(1000)
                 cy.get(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${i+1}) a`).then(($link) => {
                     cy.wrap(($link)).invoke('attr', 'href').then(($text) => {
                         let href = $text.trim();
-                        cy.get(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${i+1}) a > span`).click({ force: true }).then(($link) => {
+                        cy.get(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${i+1}) a > span`).click().then(($link) => {
                             cy.get('h1').should('contain', data.companyDropdown[i]) //validate page name
                             cy.url().should('include', href) //validate url
                         })
