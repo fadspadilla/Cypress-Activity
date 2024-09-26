@@ -7,6 +7,9 @@ describe("IBS Search Tests", () => {
         cy.acceptCookiesIBS();
     })
     it("Verify if search function is working", () => {
-        searchObj.searchItem('Amphenol Communications Solutions')
+        searchObj.inputText('#search-input', 'Amphenol Communications Solutions')
+        searchObj.clickBtn('#searchButtonMain')
+        cy.wait(1000)
+        cy.get('.search-results').should('contain', 'Amphenol Communications Solutions')
     })
 })

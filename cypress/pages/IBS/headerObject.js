@@ -9,7 +9,7 @@ class Header {
             return text.trim();
         })
     }
-    clickDropdown(selector){
+    hoverMenu(selector){
         return cy.get(selector).realHover();
     }
 }

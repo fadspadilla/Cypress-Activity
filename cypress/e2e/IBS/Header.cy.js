@@ -30,17 +30,17 @@ describe("IBS Header Tests", () => {
     });
   });
   it("Verify if services dropdown list redirects to corresponding page", () => {
-    headerObj.clickDropdown("nav > ul > li:nth-child(4)").then(() => {
+    headerObj.hoverMenu("nav > ul > li:nth-child(4)").then(() => {
       cy.get(`nav > ul > li:nth-child(4) > section > ul > li`).each((element, index, list) => {
-        cy.wait(1000)
+        cy.wait(2000)
         if (index != list.length - 1) {
           headerObj.clickElement(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${index + 1}) a > span`).then((text) => {
             let headertext = text
-            if (text == "New Product Introductions") {
+            if (headertext == "New Product Introductions") {
               headerObj.getText("h1:nth-child(1)").should("eq", "NPI");
               cy.url().should("eq", headerFix.servicesLinks[index]);
             } else {
-              headerObj.getText("h1:nth-child(1)").should("eq", text);
+              headerObj.getText("h1:nth-child(1)").should("eq", headertext);
               cy.url().should("eq", headerFix.servicesLinks[index]);
             }
           })
@@ -49,7 +49,7 @@ describe("IBS Header Tests", () => {
     })
   });
   it("Verify if markets dropdown list redirects to corresponding page", () => {
-    headerObj.clickDropdown("nav > ul > li:nth-child(6)").then(() => {
+    headerObj.hoverMenu("nav > ul > li:nth-child(6)").then(() => {
       cy.get(`nav > ul > li:nth-child(6) > section > ul > li`).each((element, index, list) => {
         cy.wait(1000)
         if (index != list.length - 1) {
