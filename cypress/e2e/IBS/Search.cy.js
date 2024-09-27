@@ -1,14 +1,16 @@
-import Search from "../../pages/IBS/searchObject"
+import PageObject from "../../pages/pagesObject";
+
 
 describe("IBS Search Tests", () => {
-    const searchObj = new Search;
+    const pageObj = new PageObject();
+
     before(() => {
         cy.visit("https://www.ibselectronics.com/")
         cy.acceptCookiesIBS();
     })
     it("Verify if search function is working", () => {
-        searchObj.inputText('#search-input', 'Amphenol Communications Solutions')
-        searchObj.clickBtn('#searchButtonMain')
+        pageObj.inputText('#search-input', 'Amphenol Communications Solutions')
+        pageObj.clickBtn('#searchButtonMain')
         cy.wait(1000)
         cy.get('.search-results').should('contain', 'Amphenol Communications Solutions')
     })

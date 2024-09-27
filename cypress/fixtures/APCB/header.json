@@ -21,5 +21,28 @@
         "Our Team",
         "Students",
         "Contact Us"
+    ],
+    "servicesLinks" : [
+        "https://www-stage.advancedpcb.com/en-us/services/design-services/",
+        "https://www-stage.advancedpcb.com/en-us/services/standard-pcbs/",
+        "https://www-stage.advancedpcb.com/en-us/services/assembly-services/",
+        "https://www-stage.advancedpcb.com/en-us/services/global-services/"
+    ],
+    "resourcesLinks": [
+        "https://www-stage.advancedpcb.com/en-us/resources/turn-times/",
+        "https://www-stage.advancedpcb.com/en-us/resources/pcb-capabilities-and-expanded-capabilities/",
+        "https://www-stage.advancedpcb.com/en-us/resources/tolerances/",
+        "https://www-stage.advancedpcb.com/en-us/resources/pricing/",
+        "https://www-stage.advancedpcb.com/en-us/resources/certifications/"
+    ],
+    "companyLinks": [
+        "https://www-stage.advancedpcb.com/en-us/company/faqs/",
+        "https://www-stage.advancedpcb.com/en-us/company/quality-assurance/",
+        "https://www-stage.advancedpcb.com/en-us/company/about/",
+        "https://www-stage.advancedpcb.com/en-us/company/careers/",
+        "https://www-stage.advancedpcb.com/en-us/company/facilities/",
+        "https://www-stage.advancedpcb.com/en-us/company/our-team/",
+        "https://www-stage.advancedpcb.com/en-us/company/students/",
+        "https://www-stage.advancedpcb.com/en-us/company/contact-us/"
     ]
 }
