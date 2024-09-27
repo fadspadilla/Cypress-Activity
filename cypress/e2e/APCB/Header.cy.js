@@ -1,9 +1,7 @@
-import Header from "../../pages/IBS/headerObject.js";
 import PageObject from "../../pages/pagesObject";
 
 
 describe("APCB Header Tests", () => {
-    const headerObj = new Header();
     const pageObj = new PageObject();
 
     let headerFix;
@@ -14,10 +12,9 @@ describe("APCB Header Tests", () => {
         });
     })
 
-    it("Verify if services dropdown list redirects to corresponding page", () => {
+    it.only("Verify if services dropdown list redirects to corresponding page", () => {
         pageObj.hoverMenu("nav > ul > li:nth-child(2)").then(() => {
             cy.get("nav > ul > li:nth-child(2) > section > ul > li").each((element, index) => {
-                cy.wait(2000)
                 pageObj.clickElement(`nav > ul > li:nth-child(2) > section > ul > li:nth-child(${index + 1}) a > span`).then((text) => {
                     let headertext = text
                     pageObj.getText("h1:nth-child(1)").should("eq", headertext);

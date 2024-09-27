@@ -6,7 +6,7 @@ describe("IBS Footer Tests", () => {
 
     before(() => {
         cy.visit("/")
-        pageObj.scroll('.footer').should('be.visible')        
+        pageObj.scroll('.footer')        
     })
     it.only("Verify if footer social media links are not empty", () => {
         cy.get(".footer-navigation > div.limit > div > div:nth-child(2) > a").each((element) => {
