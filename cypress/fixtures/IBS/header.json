@@ -1,4 +1,12 @@
 {
+    "mainMenu": [
+        "Products",
+        "Manufacturers",
+        "About IBS",
+        "Services",
+        "Resources",
+        "Markets"
+    ],
     "headerLinks": [
         "https://www.ibselectronics.com/products/",
         "https://www.ibselectronics.com/manufacturers/",

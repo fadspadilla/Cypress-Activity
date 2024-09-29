@@ -17,7 +17,7 @@ class PageObject {
       });
   }
   hoverMenu(selector) {
-    return cy.get(selector).realHover().wait(2000);
+    cy.get(selector).realHover().wait(2000);
   }
   scroll(selector) {
     cy.get(selector).scrollIntoView().wait(1000);
@@ -40,7 +40,9 @@ class PageObject {
     cy.get(selector).select(str);
   }
   getAttribute(selector, attribute) {
-    return cy.get(selector).invoke("attr", attribute);
+    return cy.get(selector).invoke("attr", attribute).then((attr) => {
+      return attr.trim();
+    });
   }
 }
 

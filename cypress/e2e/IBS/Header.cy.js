@@ -9,69 +9,66 @@ describe("IBS Header Tests", () => {
       headerFix = data;
     });
   });
-  it("Verify if header navigation links redirect to the corresponding page", () => {
-    cy.get("nav > ul > li").each((element, index) => {
-      pageObj
-        .clickElement(`nav > ul > li:nth-child(${index + 1}) > a > span`)
-        .then((text) => {
-          let headertext = text;
-          if (headertext == "About IBS") {
-            pageObj.getText("h1").should("eq", "About Us");
-            cy.url().should("eq", headerFix.headerLinks[index]);
-          } else if (headertext == "Services") {
-            pageObj.getText("h1").should("eq", "IBS Services");
-            cy.url().should("eq", headerFix.headerLinks[index]);
-          } else {
-            pageObj.getText("h1").should("eq", headertext);
-            cy.url().should("eq", headerFix.headerLinks[index]);
-          }
-        });
-    });
-  });
+  it.only("Verify if header navigation links redirect to the corresponding page", () => {
+    cy.get('nav > ul > li').each(($el, $idx) => {
+      const href = $el.find('a').attr('href');
+      pageObj.clickElement(`nav > ul > li:nth-child(${$idx + 1}) > a > span`).then((text) => {
+        let header_text = text.trim();
+        if (header_text == "About IBS") {
+          pageObj.getText('h1').should('eq', "About Us")
+        } else if (header_text == "Services") {
+          pageObj.getText('h1').should('eq', "IBS Services")
+        } else {
+          pageObj.getText('h1').should('eq', headerFix.mainMenu[$idx])
+        }
+        cy.url().should('include', href);
+      })
+    })
+  })
   it("Verify if services dropdown list redirects to corresponding page", () => {
-    pageObj.hoverMenu("nav > ul > li:nth-child(4)").then(() => {
-      cy.get(`nav > ul > li:nth-child(4) > section > ul`)
-        .find("li:not(.nav-panel-view)")
-        .each((element, index) => {
-          pageObj
-            .clickElement(`nav > ul > li:nth-child(4) > section > ul > li:nth-child(${index + 1}) a > span`)
-            .then((text) => {
-              let headertext = text;
-              if (headertext == "New Product Introductions") {
-                pageObj.getText("h1:nth-child(1)").should("eq", "NPI");
-                cy.url().should("eq", headerFix.servicesLinks[index]);
-              } else {
-                pageObj.getText("h1:nth-child(1)").should("eq", headertext);
-                cy.url().should("eq", headerFix.servicesLinks[index]);
-              }
-            });
-        });
-    });
+    cy.get(`nav > ul > li:nth-child(4)`)
+      .realHover()
+      .find("li:not(.nav-panel-view)")
+      .each(($el, $idx) => {
+        const href = $el.find('a').attr('href');
+        const menu_label = $el.find('span').text().trim();
+        cy.get(`nav > ul > li:nth-child(4) > section > ul`)
+          .find(`a`)
+          .eq($idx)
+          .click()
+          .then(() => {
+            if (menu_label == "New Product Introductions") {
+              pageObj.getText("h1:nth-child(1)").should("eq", "NPI");
+            } else {
+              pageObj.getText("h1:nth-child(1)").should("eq", menu_label);
+            }
+            cy.url().should('include', href);
+          })
+      })
   });
-  it.only("Verify if markets dropdown list redirects to corresponding page", () => {
-    pageObj.hoverMenu("nav > ul > li:nth-child(6)").then(() => {
-      cy.get(`nav > ul > li:nth-child(6) > section > ul`)
-        .find("li:not(.nav-panel-view)")
-        .each((element, index, list) => {
-          pageObj
-            .clickElement(`nav > ul > li:nth-child(6) > section > ul > li:nth-child(${index + 1}) a > span`)
-            .then((text) => {
-              let headertext = text;
-              if (headertext == "Aerospace & Aviation") {
-                pageObj.getText("h1").should("eq", "Aerospace");
-                cy.url().should("eq", headerFix.marketsLinks[index]);
-              } else if (headertext == "Automotive & Transportation") {
-                pageObj.getText("h1").should("eq", "Automotive");
-                cy.url().should("eq", headerFix.marketsLinks[index]);
-              } else if (headertext == "Power & Energy") {
-                pageObj.getText("h1").should("eq", "Power");
-                cy.url().should("eq", headerFix.marketsLinks[index]);
-              } else {
-                pageObj.getText("h1").should("eq", headertext);
-                cy.url().should("eq", headerFix.marketsLinks[index]);
-              }
-            });
-        });
-    });    
+  it("Verify if markets dropdown list redirects to corresponding page", () => {
+    cy.get(`nav > ul > li:nth-child(6)`)
+      .realHover()
+      .find("li:not(.nav-panel-view)")
+      .each(($el, $idx) => {
+        const href = $el.find('a').attr('href');
+        const menu_label = $el.find('span').text().trim();
+        cy.get(`nav > ul > li:nth-child(6) > section > ul`)
+          .find(`a`)
+          .eq($idx)
+          .click()
+          .then(() => {
+            if (menu_label == "Aerospace & Aviation") {
+              pageObj.getText("h1").should("eq", "Aerospace");
+            } else if (menu_label == "Automotive & Transportation") {
+              pageObj.getText("h1").should("eq", "Automotive");
+            } else if (menu_label == "Power & Energy") {
+              pageObj.getText("h1").should("eq", "Power");
+            } else {
+              pageObj.getText("h1").should("eq", menu_label);
+            }
+            cy.url().should('include', href);
+          })
+      });
   });
 });

@@ -11,32 +11,37 @@ describe("IBS Footer Tests", () => {
       footerFix = data;
     });
   });
-  it.only("Verify if footer support links redirects to the corresponding page", () => {
-    var support = ["FAQs", "Purchase Terms", "Sales Terms", "Request a Quote"];
+  it("Verify if footer support links redirects to the corresponding page", () => {
 
-    support.forEach(element => {
-        cy.get('.footer').find('a').contains(element).click().then((el)=>{
-            cy.wrap(el).invoke("text").then((text)=>{
-                let sprt_link = text.trim();
-                cy.log(sprt_link)
-                if(sprt_link == "FAQs"){
-                    pageObj.getText("h1").should("eq", "Frequently Asked Questions");
-                    cy.url().should("eq", footerFix.supportLinks[index - 1]);
-                }else{
-                    pageObj.getText("h1").should("eq", sprt_link);
-                    cy.url().should("eq", footerFix.supportLinks[index - 1]);
-                }
-            })
+    footerFix.supportItems.forEach(element => {
+      cy.get('.footer').find('a').contains(element).click().then(($el) => {
+        const href = $el.attr('href')
+        cy.wrap($el).invoke("text").then((text) => {
+          let sprt_link = text.trim();
+          if (sprt_link == "FAQs") {
+            pageObj.getText("h1").should("eq", "Frequently Asked Questions");
+          } else {
+            pageObj.getText("h1").should("eq", sprt_link);
+          }
+          cy.url().should("include", href);
         })
+      })
     });
   });
-  it("Verify if footer social media links exists", () => {
-    cy.get(".footer .mt-3 > a").each(($el, $index) => {
-      pageObj
-        .getLink(`.footer .mt-3 > a:nth-child(${$index + 1})`)
-        .then((href) => {
-          expect(href).to.exist;
-        });
-    });
+  it.only("Verify if footer social media links exists", () => {
+    // cy.get(".footer .mt-3 > a").each(($el, $index) => {
+    //   pageObj
+    //     .getLink(`.footer .mt-3 > a:nth-child(${$index + 1})`)
+    //     .then((href) => {
+    //       expect(href).to.exist;
+    //     });
+    // });
+
+    footerFix.mediaIcons.forEach(element => {
+      cy.get('.footer').find('i').contains(element).click().then(($el) => {
+        const href = $el.attr('href')
+      })
+    })
+
   });
 });

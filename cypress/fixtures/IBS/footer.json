@@ -1,8 +1,15 @@
 {
-    "supportLinks": [
-        "https://www.ibselectronics.com/faq/",
-        "https://www.ibselectronics.com/about/purchase-terms/",
-        "https://www.ibselectronics.com/about/sales-terms/",
-        "https://www.ibselectronics.com/contact-us/quote-request/"
-    ]
+  "supportItems": ["FAQs", "Purchase Terms", "Sales Terms", "Request a Quote"],
+  "supportLinks": [
+    "https://www.ibselectronics.com/faq/",
+    "https://www.ibselectronics.com/about/purchase-terms/",
+    "https://www.ibselectronics.com/about/sales-terms/",
+    "https://www.ibselectronics.com/contact-us/quote-request/"
+  ],
+  "mediaIcons": [
+    "i-facebook",
+    "i-instagram",
+    "i-linkedin",
+    "i-twitter"
+  ]
 }

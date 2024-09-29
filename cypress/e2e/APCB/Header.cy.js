@@ -35,7 +35,7 @@ describe("APCB Header Tests", () => {
             })
         })
     })
-    it.only("Verify if company dropdown list redirects to corresponding page", () => {
+    it("Verify if company dropdown list redirects to corresponding page", () => {
         pageObj.hoverMenu("nav > ul > li:nth-child(4)").then(() => {
             cy.wait(3000)
             cy.get("nav > ul > li:nth-child(4) > section > ul > li").each((element, index) => {
