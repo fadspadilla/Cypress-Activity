@@ -29,19 +29,10 @@ describe("IBS Footer Tests", () => {
     });
   });
   it.only("Verify if footer social media links exists", () => {
-    // cy.get(".footer .mt-3 > a").each(($el, $index) => {
-    //   pageObj
-    //     .getLink(`.footer .mt-3 > a:nth-child(${$index + 1})`)
-    //     .then((href) => {
-    //       expect(href).to.exist;
-    //     });
-    // });
-
-    footerFix.mediaIcons.forEach(element => {
-      cy.get('.footer').find('i').contains(element).click().then(($el) => {
-        const href = $el.attr('href')
+    cy.get(".footer .mt-3 > a").each(($el, $index) => {
+      pageObj.getAttribute(`.footer .mt-3 > a:nth-child(${$index + 1})`, 'href').then((href) => {
+        expect(href).to.exist;
       })
-    })
-
+    });
   });
 });
