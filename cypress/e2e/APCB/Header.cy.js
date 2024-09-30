@@ -18,14 +18,10 @@ describe("APCB Header Tests", () => {
       .each(($el, $idx) => {
         const href = $el.find('a').attr('href');
         const menu_label = $el.find('span').text().trim();
-        cy.get(`nav > ul > li:nth-child(2) > section > ul`)
-          .find(`a.nav-panel-link`)
-          .eq($idx)
-          .click({force: true})
-          .then(() => {         
-            pageObj.getText("h1:nth-child(1)").should("eq", menu_label)   
-            cy.url().should('include', href);
-          })
+        pageObj.checkDropdownCorrectRedirect(2, $idx, `a.nav-panel-link`, href).then((isRedirectCorrect) => {
+          expect(isRedirectCorrect).to.be.true;
+          pageObj.getText("h1:nth-child(1)").should("eq", menu_label)   
+        })        
       })
   });
 
@@ -36,14 +32,10 @@ describe("APCB Header Tests", () => {
       .each(($el, $idx) => {
         const href = $el.find('a').attr('href');
         const menu_label = $el.find('span').text().trim();
-        cy.get(`nav > ul > li:nth-child(3) > section > ul`)
-          .find(`a`)
-          .eq($idx)
-          .click({force: true})
-          .then(() => {
-            pageObj.getText("h1:nth-child(1)").should("eq", menu_label)  
-            cy.url().should('include', href);
-          })
+        pageObj.checkDropdownCorrectRedirect(3, $idx, `a`, href).then((isRedirectCorrect) => {
+          expect(isRedirectCorrect).to.be.true;
+          pageObj.getText("h1:nth-child(1)").should("eq", menu_label)   
+        })         
       })
   });
   it("Verify if company dropdown list redirects to corresponding page", () => {
@@ -53,14 +45,10 @@ describe("APCB Header Tests", () => {
       .each(($el, $idx) => {
         const href = $el.find('a').attr('href');
         const menu_label = $el.find('span').text().trim();
-        cy.get(`nav > ul > li:nth-child(4) > section > ul`)
-          .find(`a`)
-          .eq($idx)
-          .click({force: true})
-          .then(() => {
-            pageObj.getText("h1").should("eq", menu_label)  
-            cy.url().should('include', href);
-          })
+        pageObj.checkDropdownCorrectRedirect(4, $idx, `a`, href).then((isRedirectCorrect) => {
+          expect(isRedirectCorrect).to.be.true;
+          pageObj.getText("h1").should("eq", menu_label)   
+        })         
       })
   });
 });

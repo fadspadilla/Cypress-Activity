@@ -44,6 +44,15 @@ class PageObject {
       return attr.trim();
     });
   }
+  checkDropdownCorrectRedirect($menu_idx, $idx, $find_key, $href) {
+    return cy.get(`nav > ul > li:nth-child(${$menu_idx}) > section > ul`)
+      .find(`${$find_key}`)
+      .eq($idx)
+      .click({force: true})
+      .then(() => {
+        return cy.url().should('include', $href).then(() => true);
+      })
+  }
 }
 
 export default PageObject;
