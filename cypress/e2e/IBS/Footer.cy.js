@@ -28,11 +28,13 @@ describe("IBS Footer Tests", () => {
       })
     });
   });
-  it.only("Verify if footer social media links exists", () => {
-    cy.get(".footer .mt-3 > a").each(($el, $index) => {
-      pageObj.getAttribute(`.footer .mt-3 > a:nth-child(${$index + 1})`, 'href').then((href) => {
-        expect(href).to.exist;
-      })
-    });
+  it.only("Verify if footer social media links exists", () => {    
+    cy.get(".footer .mt-3")
+    .scrollIntoView()
+    .should("be.visible")
+    .find('a')
+    .each((element) => {
+      expect(element.attr('href')).to.exist
+    })
   });
 });

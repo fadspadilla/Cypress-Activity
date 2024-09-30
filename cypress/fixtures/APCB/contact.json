@@ -1,13 +1,15 @@
 {
-  "firstname": "Fadelyn",
-  "lastname": "Padilla",
-  "email": "fpadilla@innovuze.com",
-  "company": "QA Testing Group",
-  "street": "1 Summit Crossing",
-  "city": "Hollywood",
-  "state": "Florida",
-  "jobTitle": "QA Engineer",
-  "phoneNum": "305-637-1768",
-  "message": "I’m interested in learning more about your services. Could you please provide more information?",
-  "requiredMsg" : "Please complete this required field."
+  "formFields": [
+    { "selector": "input[name='firstname']", "value": "John" },
+    { "selector": "input[name='lastname']", "value": "Doe" },
+    { "selector": "input[name='email']:first", "value": "john.doe@example.com" },
+    { "selector": "input[name='company']", "value": "Doe Inc." },
+    { "selector": "input[name='address']", "value": "123 Elm St." },
+    { "selector": "input[name='city']", "value": "Metropolis" },
+    { "selector": "input[name='state']", "value": "CA" },
+    { "selector": "input[name='jobtitle']", "value": "Engineer" },
+    { "selector": "input[name='phone']", "value": "123-456-7890" },
+    { "selector": "textarea[name='message']", "value": "Hello, I would like more information." }
+  ],
+  "requiredMsg": "Please complete this required field."
 }

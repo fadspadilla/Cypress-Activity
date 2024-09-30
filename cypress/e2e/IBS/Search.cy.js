@@ -11,7 +11,7 @@ describe("IBS Search Tests", () => {
     it("Verify if search function is working", () => {
         pageObj.inputText('#search-input', 'Amphenol Communications Solutions')
         pageObj.clickBtn('#searchButtonMain')
-        cy.wait(1000)
+        // cy.wait(1000)
         cy.get('.search-results').should('contain', 'Amphenol Communications Solutions')
     })
 })

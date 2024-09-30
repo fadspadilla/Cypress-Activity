@@ -9,17 +9,17 @@ describe("IBS Header Tests", () => {
       headerFix = data;
     });
   });
-  it.only("Verify if header navigation links redirect to the corresponding page", () => {
+  it("Verify if header navigation links redirect to the corresponding page", () => {
     cy.get('nav > ul > li').each(($el, $idx) => {
-      const href = $el.find('a').attr('href');
-      pageObj.clickElement(`nav > ul > li:nth-child(${$idx + 1}) > a > span`).then((text) => {
-        let header_text = text.trim();
-        if (header_text == "About IBS") {
+      const href = $el.find('a.nav-link').attr('href')
+      const menu_label = $el.find('span.nav-text').text().trim()
+      cy.get('nav > ul > li.nav-item').find('a.nav-link').eq($idx).click().then(() => {
+        if(menu_label == "About IBS"){
           pageObj.getText('h1').should('eq', "About Us")
-        } else if (header_text == "Services") {
+        }else if (menu_label == "Services"){
           pageObj.getText('h1').should('eq', "IBS Services")
-        } else {
-          pageObj.getText('h1').should('eq', headerFix.mainMenu[$idx])
+        }else {
+          pageObj.getText('h1').should('eq', menu_label)
         }
         cy.url().should('include', href);
       })
@@ -38,15 +38,15 @@ describe("IBS Header Tests", () => {
           .click()
           .then(() => {
             if (menu_label == "New Product Introductions") {
-              pageObj.getText("h1:nth-child(1)").should("eq", "NPI");
+              pageObj.getText("h1:not(#isPasted)").should("eq", "NPI");
             } else {
-              pageObj.getText("h1:nth-child(1)").should("eq", menu_label);
+              pageObj.getText("h1:not(#isPasted)").should("eq", menu_label);
             }
             cy.url().should('include', href);
           })
       })
   });
-  it("Verify if markets dropdown list redirects to corresponding page", () => {
+  it.only("Verify if markets dropdown list redirects to corresponding page", () => {
     cy.get(`nav > ul > li:nth-child(6)`)
       .realHover()
       .find("li:not(.nav-panel-view)")
